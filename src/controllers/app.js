@@ -1,0 +1,1 @@
+module.exports = ($scope, $http)=>{	$scope.categories = {};	$scope.articles = [];	/**	 * Get data	 */	$http.get('/response.json').success((data)=>{		console.log(data);		$scope.categories = data.categories.reduce((o, category)=>{			o[category.id] = category;			return o;		}, {});		$scope.articles = data.articles;	})		};
